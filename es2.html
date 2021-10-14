@@ -5,8 +5,39 @@
     <body>
         <h1>JS ES 2</h1>
         <h2>Static HTML page: excercise 1 but with JQuery</h2>
-        <div>Non premere il bottone</div>
-        <button>CLICCAMI</button>
-        <script scr = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <div>div 1</div>
+        
+        <div id = "div1"></div>
+        
+        <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            //document.getElementById("div1").innerHTML = "ciao";
+            $("#div1").html("Non premere il bottone"); //si usa il # per puntare ad un id
+            
+            var rosso = true;
+
+            $("body").append(
+                $("<button id = 'btn1'> CLICCAMI </button>").click(function(){
+                $("#div1").html("ti avevo detto di non cliccare MONA");
+                $("#div1").attr("style", "background-color: rgb(238,60,238)");
+                if (rosso) {
+                    $("#btn1").attr("style", "background-color: red");
+                    rosso = false;
+                }else {
+                    $("#btn1").removeAttr("style");
+                    rosso =  true;
+                }
+            }));  // due modi per dire la stessa cosa, il metodo click invoca direttamente la funzione, qui la funzione va richiamata, mentre on vuole la definizione dell'oggeto funzione. 
+            //$("#btn1").on("click", Function());// ---|;
+            
+            console.log($("#div1"));
+            console.log($("div"));
+
+            //var h3 = $("<h3> aggiunto un titolo con jquery</h3>"); //crea dinamicamnete un oggetto html
+            //$("body").append(h3); // prendo la variabile e la aggiungo al body
+            // in un modo più sintetico
+            $("body").append($("<h3> aggiunto un titolo con jquery</h3>"));
+        </script>
     </body>
 </html>
